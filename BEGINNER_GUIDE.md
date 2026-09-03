@@ -44,3 +44,5 @@ App dekhne ke liye aapke paas do option hain:
 - **Internet:** Pehli baar setup karne ke liye internet fast hona chahiye kyunki Android Studio kuch files download karta hai.
 
 🎉 **Bas ho gaya! Aapka DroidStack app chalu ho jayega.**
+
+**Ab apna app idea banana hai?** Claude Code ya Antigravity ki madad se apna khud ka app is template pe banane ke liye [VIBE_CODING_GUIDE.md](VIBE_CODING_GUIDE.md) follow karein.
