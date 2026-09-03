@@ -1,11 +1,11 @@
 ---
 name: droidstack
-description: Orchestrates Android development tasks for the ShefStack template. Use when implementing new features, fixing bugs, or managing architecture in this repository.
+description: Orchestrates Android development tasks for the DroidStack template. Use when implementing new features, fixing bugs, or managing architecture in this repository.
 ---
 
 # DroidStack Skill
 
-This skill provides comprehensive instructions for building and maintaining the ShefStack Android template. It ensures consistency across architecture, coding style, and resource management.
+This skill provides comprehensive instructions for building and maintaining the DroidStack Android template. It ensures consistency across architecture, coding style, and resource management.
 
 ## When to use this skill
 
@@ -42,11 +42,10 @@ Always follow the 3-layer architecture:
 - Check `presentation/components/` before creating a new component.
 
 ### 4. UI State Management
-Every screen must handle all 5 `UiState` cases:
-- `Idle`: Default/blank state.
+Every screen must handle all 4 `UiState` cases:
 - `Loading`: Show `LoadingView`.
 - `Success`: Show content.
-- `Error`: Show `EmptyStateView` with the error message.
+- `Error`: Show the error message with a retry option.
 - `Empty`: Show `EmptyStateView` with an action button.
 
 ## Folder Structure
