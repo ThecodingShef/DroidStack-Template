@@ -16,7 +16,7 @@ DroidStack is a production-ready, clean-architecture Android template designed f
 - **Dependency Injection**: Hilt (Dagger) for seamless DI.
 - **Persistence**: Room Database + DataStore Preferences.
 - **Navigation**: Type-safe Navigation Compose with a centralized graph.
-- **Networking**: Pre-configured for future Retrofit integration (optional).
+- **Networking**: No network layer included yet — add Retrofit/OkHttp when your feature needs one.
 - **Asynchronous**: Kotlin Coroutines & Flow for reactive state management.
 - **Image Loading**: Coil for high-performance image loading.
 - **Theming**: Premium dark/light mode support with Material 3 Dynamic Color (optional).
@@ -74,13 +74,22 @@ com.template.app/
 
 ---
 
-## 🤖 AI-First Development
+## 🤖 AI Assistant Setup
 
-This project is optimized for AI-assisted coding. The `AGENTS.md` file provides strict rules for AI agents to:
-- Prevent hardcoded strings.
-- Ensure proper import management.
-- Maintain architecture integrity.
-- Follow the custom design system.
+This repo works with AI coding agents out of the box — clone it and open it, no extra config needed. All agents follow the same rulebook: [AGENTS.md](AGENTS.md) (architecture layers, import rules, UiState handling, what not to add).
+
+### Antigravity
+1. Clone the repo and open the folder in Antigravity.
+2. Antigravity auto-detects `.agents/skills/` and loads the custom `droidstack` skill plus the official Google Android skills (AGP upgrades, Compose migrations, R8 analysis, edge-to-edge, Play Billing).
+3. Prompt normally — use the format in [AGENTS.md](AGENTS.md#prompt-format--use-this-every-time) (`Following AGENTS.md, implement...`) for consistent results.
+
+### Claude Code
+1. Clone the repo, `cd` into it, and run `claude` (CLI) or open the folder with the Claude Code IDE extension.
+2. Claude Code reads [AGENTS.md](AGENTS.md) automatically as project instructions — same architecture and coding rules apply.
+3. Use the same prompt format: `Following AGENTS.md, implement [feature].`
+
+> [!TIP]
+> Non-coder? Skip AI setup entirely and follow [BEGINNER_GUIDE.md](BEGINNER_GUIDE.md) instead.
 
 ---
 
