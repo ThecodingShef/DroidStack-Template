@@ -90,6 +90,7 @@ This repo works with AI coding agents out of the box — clone it and open it, n
 
 > [!TIP]
 > Non-coder? Skip AI setup entirely and follow [BEGINNER_GUIDE.md](BEGINNER_GUIDE.md) instead.
+> Want to build your own app idea end-to-end with AI (no coding background needed)? Follow [VIBE_CODING_GUIDE.md](VIBE_CODING_GUIDE.md).
 
 ---
 
