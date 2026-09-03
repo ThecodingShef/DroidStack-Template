@@ -185,13 +185,125 @@ Signed bundle banne ke baad, ek real device pe install karke poora app dobara te
 
 ---
 
-## Quick Reference — Prompts Cheat Sheet
+## Reusable Prompt Library — Copy-Paste End-to-End
 
-| Kaam | Prompt Format |
-|------|---------------|
-| Naya feature | `Following AGENTS.md, implement [feature]...` |
-| Bug fix | `Following AGENTS.md, fix this error only...` |
-| Rename/personalize | `Following AGENTS.md, personalize this template for...` |
-| Version bump | `Bump versionCode and versionName in app/build.gradle.kts` |
+In sab prompts ko `[bracket]` waali jagah apni values daal ke seedha copy-paste kar sakte ho. Order wahi hai jaisa ek real app banate waqt use hoga.
+
+### 1. Personalize the template (once, at the start)
+```
+Following AGENTS.md, personalize this template for my app:
+- App name: [App Name]
+- Package name: com.[yourcompany].[appname]
+- Primary color: [color name or hex]
+
+Replace com.template.app everywhere with the new package name,
+update app_name in strings.xml, and update the theme color.
+```
+
+### 2. Add a new data entity (Room table)
+```
+Following AGENTS.md, add a new "[EntityName]" entity to the data layer.
+
+Fields: [field1: type, field2: type, field3: type...]
+
+Constraints:
+- Follow the existing Placeholder* files as the pattern (entity, DAO, repository interface + impl)
+- Wire it into AppDatabase and the Hilt modules
+- Do not touch unrelated screens
+- After changes, list: files changed + how to test
+```
+
+### 3. Build a new screen/feature
+```
+Following AGENTS.md, implement [feature name] screen.
+
+User should be able to:
+- [action 1]
+- [action 2]
+- [action 3]
+
+Constraints:
+- Modify only files needed for this feature
+- Do not refactor unrelated code
+- Handle all 4 UiState cases (Loading, Success, Error, Empty)
+- Add the new screen to Screen.kt and AppNavGraph.kt
+- After changes, list: files changed + how to test
+```
+
+### 4. Add navigation between two screens
+```
+Following AGENTS.md, add navigation from [Screen A] to [Screen B].
+
+Trigger: [e.g. "tapping a list item", "tapping a FAB"]
+Data to pass (if any): [e.g. "the item's id"]
+
+Constraints:
+- Update Screen.kt and AppNavGraph.kt only
+- Do not change unrelated screens
+```
+
+### 5. Bug fix
+```
+Following AGENTS.md, fix this error only.
+
+Error:
+[PASTE ERROR MESSAGE, OR DESCRIBE WHAT'S WRONG]
+
+Constraints:
+- Fix only the root cause
+- Do not change unrelated files
+- Explain what was wrong in simple words
+```
+
+### 6. Polish a screen's states
+```
+Following AGENTS.md, review [screen name] and make sure it correctly
+shows a loading indicator while data loads, the empty state when
+there's no data, and an error message with a retry option when
+something fails.
+```
+
+### 7. Clean up hardcoded strings/colors
+```
+Check [screen name / whole app] for any hardcoded strings or colors.
+Move strings to strings.xml and colors to the theme, following
+AGENTS.md's "No Hardcoded Strings" and "No Hardcoded Colors" rules.
+```
+
+### 8. Add app icon / branding
+```
+I've added my app icon via Android Studio's Image Asset tool. Update
+the splash screen and theme colors to match this icon's color palette:
+[describe colors, or attach the icon]
+```
+
+### 9. Version bump (before every release build)
+```
+Bump versionCode and versionName in app/build.gradle.kts for a new
+release. New versionName: [e.g. "1.1.0"].
+```
+
+### 10. Add a library/feature outside the default stack (explicit opt-in)
+```
+Following AGENTS.md, I explicitly want to add [Retrofit / Firebase
+Crashlytics / other]. Add it and wire up [specific use case], even
+though it's in the "Do Not Ever" list by default.
+```
+
+### 11. Generate a privacy policy page (for Play Store listing)
+```
+Write a simple, plain-language privacy policy page (as HTML) for an
+app called [App Name] that collects: [list what you collect, e.g.
+"nothing", "email for login", "location for X feature"]. No legal
+jargon, keep it short.
+```
+
+### 12. Pre-release sanity check
+```
+Following AGENTS.md, review the app for anything still using
+placeholder/example code (like the Placeholder entity or example
+screens) that should be removed or replaced before release. List
+what you find, don't change anything yet.
+```
 
 **Golden rule**: Chhote steps mein kaam karo, har step test karo, aur jo cheez samajh na aaye AI se plain words mein explain karne ko kaho — koi bhi "confirm ho gaya" tab tak mat maano jab tak apni aankhon se app mein chal ke na dekh lo.
