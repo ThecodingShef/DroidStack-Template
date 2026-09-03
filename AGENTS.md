@@ -1,14 +1,14 @@
-# ShefStack — Android Template by thecodingshef
+# DroidStack — Android Template by thecodingshef
 
 ## Project Identity
-- Template Name : ShefStack
+- Template Name : DroidStack
 - Created by    : thecodingshef
 - Language      : Kotlin
 - UI Toolkit    : Jetpack Compose + Material 3
 - Architecture  : Clean Architecture + Simple MVVM
 - Min SDK       : 26 (Android 8.0)
-- Target SDK    : 35
-- Package       : com.shefstack.android
+- Target SDK    : 34
+- Package       : com.template.app (rename this when you personalize the app)
 
 ---
 
@@ -42,7 +42,6 @@ util/          → Helpers, Extensions, Constants
 | Image Loading | Coil                              |
 | Logging       | Timber                            |
 | Async         | Kotlin Coroutines + Flow          |
-| Serialization | Kotlin Serialization              |
 
 ---
 
@@ -75,10 +74,10 @@ util/          → Helpers, Extensions, Constants
 ### Rule 1: No Fully-Qualified Inline Names
 ```kotlin
 // WRONG
-com.shefstack.android.presentation.components.AppButton()
+com.template.app.presentation.components.AppButton()
 
 // CORRECT
-import com.shefstack.android.presentation.components.AppButton
+import com.template.app.presentation.components.AppButton
 AppButton()
 ```
 
@@ -97,7 +96,7 @@ AppButton()
 - Only use custom components if they already exist in presentation/components/ or are explicitly requested
 
 ### Rule 5: Internal Package
-- All internal imports must start with: com.shefstack.android
+- All internal imports must start with the app's current package (com.template.app until you personalize it)
 
 ### Rule 6: No Hardcoded Strings
 - Never use hardcoded strings in Composable files.
@@ -117,7 +116,6 @@ Text(text = stringResource(id = R.string.hello_world))
 
 ```kotlin
 sealed class UiState<out T> {
-    object Idle    : UiState<Nothing>()
     object Loading : UiState<Nothing>()
     data class Success<T>(val data: T) : UiState<T>()
     data class Error(val message: String) : UiState<Nothing>()
@@ -125,11 +123,10 @@ sealed class UiState<out T> {
 }
 ```
 
-Every screen composable must handle all 5 states:
-- Idle    → show nothing or default UI
-- Loading → show LoadingView() or ShimmerEffect()
+Every screen composable must handle all 4 states:
+- Loading → show LoadingView()
 - Success → show actual content
-- Error   → show ErrorView() with retry option
+- Error   → show an error message with a retry option
 - Empty   → show EmptyStateView() with action button
 
 ---
@@ -137,7 +134,7 @@ Every screen composable must handle all 5 states:
 ## Folder Structure — Always Follow This
 
 ```
-com.shefstack.android/
+com.template.app/
 ├── data/
 │   ├── local/
 │   │   ├── dao/
@@ -214,24 +211,21 @@ Constraints:
 
 ## What This Template Includes (Do Not Re-Create)
 
-- Material 3 Theme (Color.kt, Type.kt, Shape.kt, Theme.kt)
-- Navigation setup (Screen.kt, AppNavGraph.kt)
-- Room database base setup (AppDatabase.kt)
-- DataStore preferences (AppPreferences.kt)
+- Material 3 Theme (Color.kt, Type.kt, Theme.kt)
+- Navigation setup (Screen.kt, AppNavGraph.kt), with a Splash screen already wired as the start destination
+- Room database base setup (AppDatabase.kt) with an example DAO/entity/repository (Placeholder*) — replace, don't duplicate, when adding your first real entity
 - Hilt DI modules (AppModule, DatabaseModule, RepositoryModule)
-- Reusable components:
-  - AppButton (Primary, Secondary, Text variants)
-  - AppTextField (with error state + password toggle)
-  - AppCard (clickable + non-clickable)
-  - AppTopBar (with back button + actions)
-  - AppBottomBar (with nav items)
-  - LoadingView + ShimmerEffect
+- Reusable components (presentation/components/):
+  - AppButton
+  - AppTextField
+  - AppCard
+  - LoadingView
   - EmptyStateView
-  - ErrorView
 - UiState sealed class (util/UiState.kt)
 - Extensions (util/Extensions.kt)
 - Constants (util/Constants.kt)
-- NotificationHelper (util/NotificationHelper.kt)
+
+Not included yet — build these when a feature actually needs them, don't assume they exist: DataStore preferences wrapper, AppTopBar/AppBottomBar, ErrorView/ShimmerEffect, NotificationHelper, Retrofit/network layer.
 
 ---
 
