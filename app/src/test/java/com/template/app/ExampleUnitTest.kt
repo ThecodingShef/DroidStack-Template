@@ -1,4 +1,4 @@
-package com.thecodingshef.droidstacktemplate
+package com.template.app
 
 import org.junit.Test
 
